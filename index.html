@@ -626,7 +626,7 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary py-3 px-5" type="submit">Send Message</button>
+                                <button class="btn btn-primary py-3 px-5" type="submit" id ="btn">Send Message</button>
                             </div>
                         </div>
                     </form>
@@ -660,8 +660,8 @@
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a class="border-bottom text-secondary" href="https://htmlcodex.com">Ovie Rahaman</a>
-                        <!-- <br>Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a> -->
+                        Designed By <a class="border-bottom text-secondary" href="#">Ovie Rahaman</a>
+                        <!-- <br>Distributed By: <a class="border-bottom" href="#" target="_blank">ThemeWagon</a> -->
                     </div>
                 </div>
             </div>
@@ -685,6 +685,33 @@
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="lib/isotope/isotope.pkgd.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <script>
+        var btn = document.getElementById('btn');
+        btn.addEventListener('click',function(e){
+            e.preventDefault()
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var subject = document.getElementById('subject').value;
+            var message = document.getElementById('message').value;
+            var body = 'name: ' + name +'<br/> email: ' + email + '<br/> subject '+ subject +'<br/> message' + message ;
+
+            Email.send({
+                    Host : "smtp.gmail.com",
+                    Username : "ovierahaman1@gmail.com",
+                    Password : "drdaipgyelgesdwk",
+                    To : 'ovierahaman1@gmail.com',
+                    From : email,
+                    Subject : subject,
+                    Body : body
+                }).then(
+                message => alert(message)
+                );
+        }
+        
+        )
+    </script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
